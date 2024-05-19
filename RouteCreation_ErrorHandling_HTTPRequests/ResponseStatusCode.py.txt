@@ -1,0 +1,21 @@
+from flask import Flask, make_response
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    #returns 'Hello world!' string
+    return "Hello world!"
+
+@app.route("/no_content")
+def no_comment():
+    #return a tuple with json message 'No content found' with a status of 204
+
+    return ({"Message" : "No content found!"}, 204)
+
+@app.route("/exp")
+def index_explicit():
+    #return 'Hello World' message with a status code of 200
+
+    resp = make_response({"message" : "hello world"})
+    resp.status_code = 200
+    return resp
